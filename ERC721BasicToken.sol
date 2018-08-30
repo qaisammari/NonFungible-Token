@@ -73,7 +73,7 @@ contract ERC721BasicToken is SupportsInterfaceWithLookup, ERC721Basic {
     // number 3
     function exists(uint256 _tokenId) public view returns (bool) {
         // YOUR CODE HERE
-        return tokenOwner[_tokenId] != 0;
+        return tokenOwner[_tokenId] != address(0);
 
 
     }
@@ -191,6 +191,8 @@ contract ERC721BasicToken is SupportsInterfaceWithLookup, ERC721Basic {
     // number 9
     function clearApproval(address _owner, uint256 _tokenId) internal {
         // YOUR CODE HERE
+        require(msg.sender == _owner);
+        tokenApprovals[_tokenId] = address(0);
 
     }
 
@@ -202,6 +204,11 @@ contract ERC721BasicToken is SupportsInterfaceWithLookup, ERC721Basic {
     // number 10
     function removeTokenFrom(address _from, uint256 _tokenId) internal {
         // YOUR CODE HERE
+        //TODO check if the _from is the owner
+        require(_from == tokenOwner[_tokenId]);
+        tokenOwner[_tokenId] =  address(0);
+
+
 
     }
 
@@ -213,6 +220,8 @@ contract ERC721BasicToken is SupportsInterfaceWithLookup, ERC721Basic {
     // number 11
     function addTokenTo(address _to, uint256 _tokenId) internal {
         // YOUR CODE HERE
+        require(tokenOwner[_tokenId] == address(0));
+        tokenOwner[_tokenId] = _to;
 
     }
 
@@ -233,6 +242,8 @@ contract ERC721BasicToken is SupportsInterfaceWithLookup, ERC721Basic {
     public
     {
         // YOUR CODE HERE
+        require(_from == tokenOwner[_tokenId]);
+        tokenOwner[_tokenId] = _to;
 
     }
 

@@ -81,9 +81,9 @@ contract ERC721Token is SupportsInterfaceWithLookup, ERC721BasicToken, ERC721 {
     address _owner,
     uint256 _index
   )
-    public
-    view
-    returns (uint256)
+  public
+  view
+  returns (uint256)
   {
     require(_index < balanceOf(_owner));
     return ownedTokens[_owner][_index];
@@ -124,7 +124,7 @@ contract ERC721Token is SupportsInterfaceWithLookup, ERC721BasicToken, ERC721 {
    * @param _to address representing the new owner of the given token ID
    * @param _tokenId uint256 ID of the token to be added to the tokens list of the given address
    */
-   //number 15
+  //number 15
   function addTokenTo(address _to, uint256 _tokenId) internal {
     // YOUR CODE HERE
 
@@ -162,9 +162,11 @@ contract ERC721Token is SupportsInterfaceWithLookup, ERC721BasicToken, ERC721 {
    * @param _to address the beneficiary that will own the minted token
    * @param _tokenId uint256 ID of the token to be minted by the msg.sender
    */
-   // number 16
+  // number 16
   function _mint(address _to, uint256 _tokenId) internal {
     // YOUR CODE HERE
+    super._mint(_to, _tokenId);
+
 
   }
 
