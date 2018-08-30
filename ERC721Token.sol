@@ -166,8 +166,7 @@ contract ERC721Token is SupportsInterfaceWithLookup, ERC721BasicToken, ERC721 {
   function _mint(address _to, uint256 _tokenId) internal {
     // YOUR CODE HERE
     super._mint(_to, _tokenId);
-
-
+    allTokens.push(_tokenId);
   }
 
   /**
